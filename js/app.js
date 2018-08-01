@@ -59,6 +59,15 @@
 
   };
 
+  // Check if a box has been claimed
+  var isClaimed = function (event) {
+
+    var isClaimed = event.target.classList.contains('box-filled-1') || event.target.classList.contains('box-filled-2');
+
+    return isClaimed;
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
