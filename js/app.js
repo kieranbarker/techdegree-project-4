@@ -17,4 +17,22 @@
     return document.querySelector(selector) || document.createElement('_');
   };
 
+  // Reset the board back to its original state
+  var resetGame = function () {
+
+    // Set the boxes back to normal
+    boxes.forEach(function (box) {
+      box.className = 'box';
+    });
+
+    // Set the active player back to O
+    activePlayer = false;
+    getElem('#player1').classList.add('active')
+    getElem('#player2').classList.remove('active')
+
+    // Set the end screen back to normal
+    getElem('#finish').className = 'screen screen-win is-hidden';
+
+  };
+
 })(window, document);
