@@ -83,6 +83,15 @@
 
   };
 
+  // Remove the hover image when the user stops hovering over a box
+  var removeHoverImg = function (event) {
+
+    if (event.target.matches('.box') && event.target.style.backgroundImage) {
+      event.target.style.backgroundImage = '';
+    }
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
