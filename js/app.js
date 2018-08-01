@@ -68,6 +68,21 @@
 
   };
 
+  // Set the hover image depending on the active player
+  var setHoverImg = function (event) {
+
+    if (event.target.matches('.box') && !isClaimed(event)) {
+
+      // Get the image to use
+      var hoverImg = activePlayer ? 'img/x.svg' : 'img/o.svg';
+
+      // Show the image when the user hovers over the box
+      event.target.style.backgroundImage = 'url("' + hoverImg + '")';
+
+    }
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
