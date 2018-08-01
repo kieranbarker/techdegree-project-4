@@ -162,6 +162,14 @@
 
   };
 
+  // Hide the board and show the end screen
+  var endGame = function (event) {
+
+    getElem('.board').classList.add('is-hidden');
+    getElem('#finish').classList.remove('is-hidden');
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
