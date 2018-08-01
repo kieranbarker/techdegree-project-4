@@ -92,6 +92,17 @@
 
   };
 
+  // Claim a box when clicked
+  var claimBox = function (event) {
+
+    // Get the image class based on the active player
+    var imgClass = activePlayer ? 'box-filled-2' : 'box-filled-1';
+
+    // Add the image class to the box that was clicked
+    event.target.classList.add(imgClass);
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
