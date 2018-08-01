@@ -9,4 +9,7 @@
   // Set the active player (true when X, false when O)
   var activePlayer = false;
 
+  // Select the boxes
+  var boxes = document.querySelectorAll('.boxes > .box')
+
 })(window, document);
