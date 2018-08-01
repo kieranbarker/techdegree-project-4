@@ -207,7 +207,10 @@
   };
 
   document.addEventListener('click', function (event) {
+
     startGame(event);
+    takeTurn(event);
+
   }, false);
 
 })(window, document);
