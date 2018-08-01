@@ -123,6 +123,45 @@
     return document.querySelectorAll('.boxes > [class*="box-filled-"]').length === 9;
   };
 
+  // Check for a win
+  var isWinner = function (boxes) {
+
+    // Winning combinations
+    var winningCombos = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+
+    var isWinner = winningCombos.filter(function (combo) {
+
+      // Get the boxes from the NodeList
+      var firstBox = boxes[combo[0]];
+      var secondBox = boxes[combo[1]];
+      var thirdBox = boxes[combo[2]];
+
+    	// Make sure the boxes exist
+    	if (!firstBox || !secondBox || !thirdBox) return false;
+
+      // Check if the boxes have been filled in and they match
+      var isFirstBoxMarked = /box-filled-/.test(firstBox.className);
+      var areBoxesTheSameValue = firstBox.className === secondBox.className && firstBox.className === thirdBox.className;
+
+      // Return true or false depending on these conditions
+      return isFirstBoxMarked && areBoxesTheSameValue;
+
+    });
+
+    // Return the winner (or false if there isn't one)
+    return (isWinner.length > 0 ? boxes[isWinner[0][0]].className.replace('box box-filled-', '') : false);
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
