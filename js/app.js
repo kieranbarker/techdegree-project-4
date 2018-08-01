@@ -103,6 +103,21 @@
 
   };
 
+  // Update the active player
+  var updateActivePlayer = function () {
+
+    if (activePlayer) {
+      getElem('#player1').classList.add('active');
+      getElem('#player2').classList.remove('active');
+    } else {
+      getElem('#player1').classList.remove('active');
+      getElem('#player2').classList.add('active');
+    }
+
+    activePlayer = !activePlayer;
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
