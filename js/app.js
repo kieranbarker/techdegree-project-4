@@ -170,6 +170,42 @@
 
   };
 
+  // Take player turn when a box is clicked
+  var takeTurn = function (event) {
+
+    if (event.target.matches('.box') && !isClaimed(event)) {
+
+      // Claim the box and update the active player
+      claimBox(event);
+      updateActivePlayer();
+
+      // Check for a win/tie
+      if (isWinner(boxes)) {
+
+        var winner = isWinner(boxes);
+
+        if (winner === '1') {
+          getElem('#finish').classList.add('screen-win-one');
+        } else if (winner === '2') {
+          getElem('#finish').classList.add('screen-win-two');
+        }
+
+        getElem('.message').textContent = 'Winner';
+
+        endGame();
+
+      } else if (isComplete() && !isWinner(boxes)) {
+
+        getElem('#finish').classList.add('screen-win-tie');
+        getElem('.message').textContent = 'It\'s a Tie!';
+        endGame();
+
+      }
+
+    }
+
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
