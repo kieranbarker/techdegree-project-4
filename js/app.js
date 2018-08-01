@@ -213,4 +213,12 @@
 
   }, false);
 
+  document.addEventListener('mouseenter', function (event) {
+    setHoverImg(event);
+  }, true);
+
+  document.addEventListener('mouseleave', function (event) {
+    removeHoverImg(event);
+  }, true);
+
 })(window, document);
