@@ -35,4 +35,32 @@
 
   };
 
+  // Show the game board and hide the other screens
+  var startGame = function (event) {
+
+   if (event.target.matches('[data-new-game]')) {
+
+     // Prevent default link behavior
+     event.preventDefault();
+
+     // Reset the board if the game has finished
+     if (event.target.matches('#finish .button')) {
+       resetGame();
+     }
+
+     // Hide the other screens
+     getElem('.screen-start').classList.add('is-hidden');
+     getElem('#finish').classList.add('is-hidden');
+
+     // Show the board
+     getElem('.board').classList.remove('is-hidden');
+
+   }
+
+  };
+
+  document.addEventListener('click', function (event) {
+    startGame(event);
+  }, false);
+
 })(window, document);
