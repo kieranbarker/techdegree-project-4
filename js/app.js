@@ -118,6 +118,11 @@
 
   };
 
+  // Check if all boxes have been filled in
+  var isComplete = function () {
+    return document.querySelectorAll('.boxes > [class*="box-filled-"]').length === 9;
+  };
+
   document.addEventListener('click', function (event) {
     startGame(event);
   }, false);
