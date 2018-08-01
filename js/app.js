@@ -6,4 +6,7 @@
 
   'use strict';
 
+  // Set the active player (true when X, false when O)
+  var activePlayer = false;
+
 })(window, document);
