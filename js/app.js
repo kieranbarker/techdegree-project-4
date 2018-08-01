@@ -12,4 +12,9 @@
   // Select the boxes
   var boxes = document.querySelectorAll('.boxes > .box')
 
+  // Get an element (or return a dummy element if it doesn't exist)
+  var getElem = function (selector) {
+    return document.querySelector(selector) || document.createElement('_');
+  };
+
 })(window, document);
