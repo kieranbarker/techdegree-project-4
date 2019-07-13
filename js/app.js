@@ -1,7 +1,3 @@
-/*!
- * Immediately Invoked Function Expression Boilerplate
- * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
- */
 ;(function (window, document, undefined) {
 
   'use strict';
@@ -71,6 +67,9 @@
   // Set the hover image depending on the active player
   var setHoverImg = function (event) {
 
+    // Bail if the matches method is not in the event target
+    if (!('matches' in event.target)) return;
+
     if (event.target.matches('.box') && !isClaimed(event)) {
 
       // Get the image to use
@@ -85,6 +84,9 @@
 
   // Remove the hover image when the user stops hovering over a box
   var removeHoverImg = function (event) {
+
+    // Bail if the matches method is not in the event target
+    if (!('matches' in event.target)) return;
 
     if (event.target.matches('.box') && event.target.style.backgroundImage) {
       event.target.style.backgroundImage = '';
@@ -206,19 +208,14 @@
 
   };
 
-  document.addEventListener('click', function (event) {
+  document.documentElement.addEventListener('click', function (event) {
 
     startGame(event);
     takeTurn(event);
 
   }, false);
 
-  document.addEventListener('mouseenter', function (event) {
-    setHoverImg(event);
-  }, true);
-
-  document.addEventListener('mouseleave', function (event) {
-    removeHoverImg(event);
-  }, true);
+  document.documentElement.addEventListener('mouseenter', setHoverImg, true);
+  document.documentElement.addEventListener('mouseleave', removeHoverImg, true);
 
 })(window, document);
